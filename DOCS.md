@@ -54,7 +54,7 @@ Loops as many times as needed to produce the desired amount of items.
 
         }
 
-++ count - increases # of times looped. Used by index to track producer postion
+++ count - increases # of times looped. Used by index to track producer postion.
 ++ shmp->arrayCount - Increases number of items in buffer.
 ++itemsProduced - determines how many times needed to increase shmp->slotsFilled.
 
