@@ -42,14 +42,14 @@ Initialized in the producer file.
 slotsFilled will be initially set to 0, because the array is empty. For this reason, slotsEmpty is set to 2.
 mutexProducer set to 1, as the producer needs to run before running the consumer.
 
-## The producer
+## The Producer
 The producers job is to randomly produce 1 or 2 items into the shared buffer.
 Uses rand() to determine how many items to produce.
 
     //Items the producer wants to produce
     int itemsToProduce = (std::rand() % 2) + 1;
 
-### Producing items
+### Producing Items
 Loops as many times as needed to produce the desired amount of items.
 
     for(int i = 0; i < itemsToProduce && shmp->arrayCount < SIZE; ++i){
@@ -80,7 +80,7 @@ The consumers job is to randomly consume 1 or 2 items from the shared buffer.
     //# of items consumer wants to consume
     int itemsToConsume = (std::rand() % 2) + 1;
 
-### consuming items
+### Consuming Items
 Loops as many times as needed to consume the desired amount of items
 
         //conusmer only consumes if array has item
@@ -96,9 +96,9 @@ Loops as many times as needed to consume the desired amount of items
             ++count;
             --shmp->arrayCount;
         }
-*++count - increases # of times looped. Used by index to track producer postion.
-*--shmp->arrayCount - decreases number of items in buffer.
-++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty
+* ++count - increases # of times looped. Used by index to track producer postion.
+* --shmp->arrayCount - decreases number of items in buffer.
+* ++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty
 
 
 
