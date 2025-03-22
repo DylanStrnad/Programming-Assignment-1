@@ -30,6 +30,18 @@ This structure is used by the shared memory. It allows the producer and consume 
     sem_t mutexProducer;
     sem_t mutexConsumer; };
 
+## Semaphore Setup
+Initialized in the producer file.
+
+    //Initialize emephores
+    sem_init(&shmp->slotsFilled, 1, 0);
+    sem_init(&shmp->slotsEmpty, 1, 2);
+    sem_init(&shmp->mutexProducer, 1, 1);
+    sem_init(&shmp->mutexConsumer, 1, 0);
+    
+slotsFilled will be initially set to 0, because the array is empty. For this reason, slotsEmpty is set to 2.
+mutexProducer set to 1, as the producer needs to run before running the consumer.
+
 ## The producer
 The producers job is to randomly produce 1 or 2 items into the shared buffer.
 Uses rand() to determine how many items to produce.
@@ -65,7 +77,28 @@ Loops as many times as needed to produce the desired amount of items.
 ## The consumer
 The consumers job is to randomly consume 1 or 2 items from the shared buffer. 
 
-### Consumer semphores
+    //# of items consumer wants to consume
+    int itemsToConsume = (std::rand() % 2) + 1;
+
+### consuming items
+Loops as many times as needed to consume the desired amount of items
+
+        //conusmer only consumes if array has item
+        for(int i = 0; i < itemsToConsume && shmp->arrayCount > 0; ++i){
+
+            //tracks position of consumer
+            index = count % 2;
+
+            int item = shmp->buffer[index];
+            shmp->buffer[index] = 0;
+
+            ++itemsConsumed;
+            ++count;
+            --shmp->arrayCount;
+        }
+*++count - increases # of times looped. Used by index to track producer postion.
+*--shmp->arrayCount - decreases number of items in buffer.
+++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty
 
 
 
