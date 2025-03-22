@@ -13,6 +13,10 @@ Semaphores are used to implement mutual exlcusion, in which only one process can
 Implimenting the shared memory and semaphores was a difficult process. I have not worked with shared memory before, and this was a learning experience. Also, synchronizing the producer and consumer to not run at the same time was difficult. Learning how to set up the semaphores and use them to synchronize the procuder and consumer was not an easy task. 
 
 ## How To Run:
+To compile code in linux environment, run these commands:
+
   ```sh
-  npm install npm@latest -g
+  $ g++ producer.c -pthread -lrt -o producer
+  $ g++ consumer.c -pthread -lrt -o consumer
+  $ ./producer & ./consumer &
   ```
