@@ -1,5 +1,6 @@
 # Programming-Assignment-1
 **Author: Dylan Strnad**
+
 This project simulates a producer and consumer using shared memory and semaphores.
 
 ## How it was made: 
