@@ -44,7 +44,7 @@ mutexProducer set to 1, as the producer needs to run before running the consumer
 
 ## Semaphore Utilizaton
 
-Before entering the producers critical section, we will wait until the number of slots empty is greater than 0. If this is the case, it continues to the next line, which will wait until its the producers turn.
+Before entering the producers critical section, the programs waits until the number of slots empty is greater than 0. If this is the case, it continues to the next line and waits until it is the producers turn.
 
         // slotsEmpty > 0, then continue
         sem_wait(&shmp->slotsEmpty);  
@@ -52,7 +52,7 @@ Before entering the producers critical section, we will wait until the number of
         // mutex > 0, Producers turn
         sem_wait(&shmp->mutexProducer); 
         
-After exiting the critical section, the producer will increase the number of slots filled. Also, it will indicate that its the producers turn. The for loop below is explained in the producer section.
+After exiting the critical section, the producer will increase the number of slots filled. Also, it will indicate that it is the consumers turn. The for loop below is explained in the producer section.
 
        // increase slots filled by number of items produced.
        for(int i = 0; i < itemsProduced; ++i){
@@ -62,7 +62,7 @@ After exiting the critical section, the producer will increase the number of slo
         // Consumers turn
         sem_post(&shmp->mutexConsumer);
 
-The consumer code follows the same logic as shown above.
+The consumer code follows the same logic as the code above.
 
 
 ## The Producer
