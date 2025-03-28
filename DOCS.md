@@ -42,6 +42,29 @@ Initialized in the producer file.
 slotsFilled will be initially set to 0, because the array is empty. For this reason, slotsEmpty is set to 2.
 mutexProducer set to 1, as the producer needs to run before running the consumer.
 
+## Semaphore Utilizaton
+
+Before entering the producers critical section, we will wait until the number of slots empty is greater than 0. If this is the caase, it continues to the next line, which will wait until its the producers turn.
+
+        // slotsEmpty > 0, then continue
+        sem_wait(&shmp->slotsEmpty);  
+
+        // mutex > 0, Producers turn
+        sem_wait(&shmp->mutexProducer); 
+        
+After exiting the critical section, the producer will increase the number of slots filled. Also, it will indicate that its the producers turn. The for loop below is explained in the producer section.
+
+       // increase slots filled by number of items produced.
+       for(int i = 0; i < itemsProduced; ++i){
+            sem_post(&shmp->slotsFilled); 
+        }
+
+        // Consumers turn
+        sem_post(&shmp->mutexConsumer);
+
+The consumer code follows the same logic.
+
+
 ## The Producer
 The producers job is to randomly produce 1 or 2 items into the shared buffer.
 Uses rand() to determine how many items to produce.
