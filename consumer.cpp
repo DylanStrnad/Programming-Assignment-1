@@ -8,8 +8,8 @@
 #include <unistd.h>
 #include <semaphore.h>
 #include <iostream>
-#include <cstdlib>  // for std::rand() and std::srand()
-#include <ctime>    // for std::time()
+#include <cstdlib>
+#include <ctime> 
 
 // TABLESIZE = 2
 const int SIZE {2};
