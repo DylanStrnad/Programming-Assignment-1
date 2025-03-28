@@ -26,4 +26,4 @@ To compile code in linux environment, run these commands:
 
 ![image](https://github.com/user-attachments/assets/87bbbc6c-1233-4d6c-8468-fe0a88f43910)
 
-This example shows when the producer and consumer enter and exit their critical sections, and the table after the producer and consumer make modifications to the table. This example shows how these processes follow mutual exlcusion, in whih only one will enter their critical section at a time. As shown in this example, the producer must exit before the consumer can enter, and vice versa.
+This example shows when the producer and consumer enter and exit their critical sections, and the table after the producer and consumer make modifications to the table. It also shows how these processes follow mutual exlcusion, in whih only one will enter their critical section at a time. As shown in this example, the producer must exit before the consumer can enter, and vice versa.
