@@ -13,7 +13,7 @@
     shmp = (sharedMem*)mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
 ## Shared Memory Data Structure
-This structure is used by the shared memory. It allows the producer and consume to access and modify the buffer. Also declares semaphores, which will be used for mutual exclusion(only allowing one process to access the shared memory at a time).
+This structure is used by the shared memory. It allows the producer and consumer to access and modify the buffer. Also declares semaphores, which will be used for mutual exclusion(only allowing one process to access the shared memory at a time).
 
     //make struct with semephore and table
     struct sharedMem{
