@@ -13,7 +13,7 @@
     shmp = (sharedMem*)mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
 ## Shared Memory Data Structure
-This structure is used by the shared memory. It allows the producer and consumer to access and modify the buffer. Also declares semaphores, which will be used for mutual exclusion(only allowing one process to access the shared memory at a time).
+This structure is used by the shared memory. It allows the producer and consumer to access and modify the buffer. Also declares semaphores, which will be used for mutual exclusion (only allowing one process to access the shared memory at a time).
 
     //make struct with semephore and table
     struct sharedMem{
@@ -68,7 +68,7 @@ Loops as many times as needed to produce the desired amount of items.
 
 * ++count - increases # of times looped. Used by index to track producer postion.
 * ++shmp->arrayCount - Increases number of items in buffer.
-* ++itemsProduced - determines how many times needed to increase shmp->slotsFilled.
+* ++itemsProduced - determines how many times needed to increase shmp->slotsFilled. This is utilized in the loop below:
   
         for(int i = 0; i < itemsProduced; ++i){
             sem_post(&shmp->slotsFilled); 
