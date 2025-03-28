@@ -69,7 +69,8 @@ Loops as many times as needed to produce the desired amount of items.
 * ++count - increases # of times looped. Used by index to track producer postion.
 * ++shmp->arrayCount - Increases number of items in buffer.
 * ++itemsProduced - determines how many times needed to increase shmp->slotsFilled. This is utilized in the loop below:
-  
+
+        // increase slots filled by number of items produced.
         for(int i = 0; i < itemsProduced; ++i){
             sem_post(&shmp->slotsFilled); 
         }
@@ -98,7 +99,12 @@ Loops as many times as needed to consume the desired amount of items
         }
 * ++count - increases # of times looped. Used by index to track producer postion.
 * --shmp->arrayCount - decreases number of items in buffer.
-* ++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty
+* ++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty. This is utilized in the loop below:
+  
+        // increase slotsEmpty by number of items consumed
+        for(int i = 0; i < itemsConsumed; ++i){
+            sem_post(&shmp->slotsEmpty); 
+        }
 
 
 
