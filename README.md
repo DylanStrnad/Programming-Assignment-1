@@ -11,7 +11,7 @@ Semaphores are used to implement mutual exlcusion, in which only one process can
 
 ## Lessons Learned:
 
-Implimenting the shared memory and semaphores was a difficult process. I have not worked with shared memory before, and this was a learning experience. Also, synchronizing the producer and consumer to not run at the same time was difficult. Learning how to set up the semaphores and use them to synchronize the procuder and consumer was not an easy task. 
+Implimenting the shared memory and semaphores was a difficult process. This project showed me how to set up shared memory between 2 cpp files, and how to manipulate this shared memory. This shared memory had to be manipulated within the process' code, but without semaphores, both processes would have unrestricted access to the shared memory, and would not work as intended. To solve this issue, semaphores had to be implimented. This allowed me to lock a process out of its critical section if another process was currently inside its critical section. For this project, I learned how to implement these features.
 
 ## How To Run:
 To compile code in linux environment, run these commands:
