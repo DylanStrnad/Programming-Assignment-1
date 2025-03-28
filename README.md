@@ -16,7 +16,11 @@ Implimenting the shared memory and semaphores was a difficult process. I have no
 To compile code in linux environment, run these commands:
 
   ```sh
-  $ g++ producer.c -pthread -lrt -o producer
-  $ g++ consumer.c -pthread -lrt -o consumer
+  $ g++ producer.cpp -pthread -lrt -o producer
+  $ g++ consumer.cpp -pthread -lrt -o consumer
   $ ./producer & ./consumer &
   ```
+
+##Examples
+
+![image](https://github.com/user-attachments/assets/87bbbc6c-1233-4d6c-8468-fe0a88f43910)
