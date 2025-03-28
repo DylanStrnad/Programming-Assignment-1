@@ -44,7 +44,7 @@ mutexProducer set to 1, as the producer needs to run before running the consumer
 
 ## Semaphore Utilizaton
 
-Before entering the producers critical section, we will wait until the number of slots empty is greater than 0. If this is the caase, it continues to the next line, which will wait until its the producers turn.
+Before entering the producers critical section, we will wait until the number of slots empty is greater than 0. If this is the case, it continues to the next line, which will wait until its the producers turn.
 
         // slotsEmpty > 0, then continue
         sem_wait(&shmp->slotsEmpty);  
@@ -62,7 +62,7 @@ After exiting the critical section, the producer will increase the number of slo
         // Consumers turn
         sem_post(&shmp->mutexConsumer);
 
-The consumer code follows the same logic.
+The consumer code follows the same logic as shown above.
 
 
 ## The Producer
@@ -89,9 +89,9 @@ Loops as many times as needed to produce the desired amount of items.
 
         }
 
-* ++count - increases # of times looped. Used by index to track producer postion.
+* ++count - increases # of times looped. Used by index to track the producers postion in the buffer.
 * ++shmp->arrayCount - Increases number of items in buffer.
-* ++itemsProduced - determines how many times needed to increase shmp->slotsFilled. This is utilized in the loop below:
+* ++itemsProduced - determines how many times the code needs to increase shmp->slotsFilled. This is utilized in the loop below:
 
         // increase slots filled by number of items produced.
         for(int i = 0; i < itemsProduced; ++i){
@@ -120,7 +120,7 @@ Loops as many times as needed to consume the desired amount of items
             ++count;
             --shmp->arrayCount;
         }
-* ++count - increases # of times looped. Used by index to track producer postion.
+* ++count - increases # of times looped. Used by index variable to track the consumers postion in the buffer.
 * --shmp->arrayCount - decreases number of items in buffer.
 * ++itemsConsumed - determines how many times needed to increase shmp->slotsEmpty. This is utilized in the loop below:
   
