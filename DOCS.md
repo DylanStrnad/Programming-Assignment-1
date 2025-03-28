@@ -33,7 +33,7 @@ This structure is used by the shared memory. It allows the producer and consumer
 ## Semaphore Setup
 Initialized in the producer file.
 
-    //Initialize emephores
+    //Initialize semephores
     sem_init(&shmp->slotsFilled, 1, 0);
     sem_init(&shmp->slotsEmpty, 1, 2);
     sem_init(&shmp->mutexProducer, 1, 1);
