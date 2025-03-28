@@ -7,7 +7,7 @@ This project simulates a producer and consumer using shared memory and semaphore
 
 **Programmming languaged used:** C++
 
-Semaphores are used to implement mutual exlcusion, in which only one process can run at a time. The producer and consumer have their own files, and make use of semaphores to signal when it is time to run. Additionally, shared memory is used to share the contents between the files. This allows the producer and consumer to access data from the same memroy location. 
+Semaphores are used to implement mutual exlcusion, in which only one process can run at a time. The producer and consumer have their own files, and make use of semaphores to signal when it is time to run. Additionally, shared memory is used to share the contents between the files. This allows the producer and consumer to access data from the same memory location. 
 
 ## Lessons Learned:
 
