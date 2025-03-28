@@ -11,7 +11,7 @@ Semaphores are used to implement mutual exlcusion, in which only one process can
 
 ## Lessons Learned:
 
-Implimenting the shared memory and semaphores was a difficult process. This project showed me how to set up shared memory between 2 cpp files, and how to manipulate this shared memory. This shared memory had to be manipulated within the process' code, but without semaphores, both processes would have unrestricted access to the shared memory, and would not work as intended. To solve this issue, semaphores had to be implimented. This allowed me to lock a process out of its critical section if another process was currently inside its critical section. For this project, I learned how to implement these features.
+Implimenting the shared memory and semaphores was a difficult process. This project showed me how to set up shared memory between 2 cpp files, and how to manipulate this shared memory. This shared memory had to be manipulated within the process code, but without semaphores, both processes would have unrestricted access to the shared memory, and the processes would not work as intended. To solve this issue, semaphores are implimented. This allows to lock a process out of its critical section if another process was currently inside its critical section. For this project, I learned how to implement these features.
 
 ## How To Run:
 To compile code in linux environment, run these commands:
@@ -26,4 +26,4 @@ To compile code in linux environment, run these commands:
 
 ![image](https://github.com/user-attachments/assets/87bbbc6c-1233-4d6c-8468-fe0a88f43910)
 
-This example shows when the producer and consumer enter and exit their critical sections, and the table after the producer and consumer make modifications to the table. It also shows how these processes follow mutual exlcusion, in whih only one will enter their critical section at a time. As shown, the producer must exit before the consumer can enter, and vice versa.
+This example shows when the producer and consumer enter and exit their critical sections, and the table after the producer and consumer make modifications to the table. It also shows how these processes follow mutual exlcusion, in which only one will enter their critical section at a time. As shown, the producer must exit before the consumer can enter, and vice versa.
